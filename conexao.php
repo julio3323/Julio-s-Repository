@@ -1,7 +1,7 @@
 <?php
-	$dsn = "mysql:host=localhost;dbname=login;charset=utf8";
+	$dsn = "mysql:host=mysql.railway.internal;dbname=railway;charset=utf8";
 	$usuario = "root";
-	$senha = "";
+	$senha = "IQwFILBxneApDfoQuQzeaQEiCrDyHyVF";
 
 	try{
 		$PDO = new PDO($dsn, $usuario, $senha);
