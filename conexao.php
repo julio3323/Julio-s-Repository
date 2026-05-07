@@ -1,4 +1,7 @@
 <?php
+
+	header('Content-Type: Application/json');
+
 	$dsn = "mysql:host=mysql.railway.internal;dbname=railway;charset=utf8";
 	$usuario = "root";
 	$senha = "IQwFILBxneApDfoQuQzeaQEiCrDyHyVF";
