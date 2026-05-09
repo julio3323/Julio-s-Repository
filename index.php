@@ -1,3 +1,4 @@
 <?php
-  echo Tudo certo, divo.;
+  header("Content-Type: application/json; charset=UTF-8);
+  echo ("Tudo certo, divo.");
 ?>
