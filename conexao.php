@@ -1,19 +1,18 @@
 <?php
+header('Content-Type: application/json');
 
-	header('Content-Type: Application/json');
-
-	$dsn = "mysql:host=mysql.railway.internal;dbname=railway;charset=utf8";
-	$usuario = "root";
-	$senha = "IQwFILBxneApDfoQuQzeaQEiCrDyHyVF";
-	
-
-	try{
-		$PDO = new PDO($dsn, $usuario, $senha);
-
-		//echo "Conectado";
-	}
-	catch(PDOExcepton $erro){
-		echo "conexao_erro";
-		exit;
-	}
+$ocon = mysqli_connect(
+        getenv('MYSQLHOST'),
+        getenv('MYSQLUSER'),
+        getenv('MYSQLPASSWORD'),
+        getenv('MYSQL_DATABASE') /*?: "railway"*/,
+        getenv('MYSQLPORT'));
+$resposta = array();
+if(!$ocon){
+    header('Content-Type: application/json');
+    $resposta["status"] = "erro";
+    $resposta["mensagem"] = "Falha na conexão com o banco de dados";
+    echo json_encode($resposta);
+    exit;
+}
 ?>
