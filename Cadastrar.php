@@ -18,7 +18,7 @@
 	else{
 		//cadastro realizado
 
-		$sql_insert = "INSERT INTO tblogin (nome, email, senha) VALUES (:NOME, :EMAIL, :SENHA);";
+		$cadastrar = "INSERT INTO tblogin (nome, email, senha) VALUES (:NOME, :EMAIL, :SENHA);";
 		$stmt = $PDO->prepare($sql_insert);
 		$stmt->bindParam(':NOME', $nome);
 		$stmt->bindParam(':EMAIL', $email);
