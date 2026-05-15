@@ -13,7 +13,8 @@
 	$stmt->execute();
 
 	if($stmt->rowCount() > 0){
-		$retornoApp = array("CADASTRO"=>"EMAIL_ERRO");
+		$resposta = ["status"] => "erro";
+		$resposta = ["mensagem"] => "Email já cadastrado";
 	}
 	else{
 		//cadastro realizado
@@ -25,10 +26,12 @@
 		$stmt->bindParam(':SENHA', $senha);
 
 		if($stmt->execute()){
-			$retornoApp = array("CADASTRO"=>"SUCESSO");
+			$rsposta = ["status"] => "sucesso";
+			$resposta = ["mensagem"] => "Cadastro bem sucedido";
 		}else{
-			$retornoApp = array("CADASTRO"=>"ERRO");
+			$resposta = ["status"] => "erro"
+			$resposta = ["mensagem"] => "Erro de cadastro, tente novamente mais tarde.";
 		}
 	}
-	echo json_encode($retornoApp);
+	echo json_encode($resposta);
 ?>
