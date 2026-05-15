@@ -20,7 +20,7 @@
 		//cadastro realizado
 
 		$cadastrar = "INSERT INTO tblogin (nome, email, senha) VALUES (:NOME, :EMAIL, :SENHA);";
-		$stmt = $PDO->prepare($sql_insert);
+		$stmt = $PDO->prepare($cadastrar);
 		$stmt->bindParam(':NOME', $nome);
 		$stmt->bindParam(':EMAIL', $email);
 		$stmt->bindParam(':SENHA', $senha);
