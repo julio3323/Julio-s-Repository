@@ -6,7 +6,7 @@
 	$email = $_POST['email_app'];
 	$senha = $_POST['senha_app'];
 
-	$sql_login = "SELECT * FROM tblogin WHERE email = :EMAIL AND senha = :SENHA";
+	$logar = "SELECT * FROM tblogin WHERE email = :EMAIL AND senha = :SENHA";
 	$stmt = $PDO->prepare($sql_login);
 	$stmt->bindParam(':EMAIL', $email);
 	$stmt->bindParam(':SENHA', $senha);
