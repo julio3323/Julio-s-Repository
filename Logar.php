@@ -7,16 +7,18 @@
 	$senha = $_POST['senha_app'];
 
 	$logar = "SELECT * FROM tblogin WHERE email = :EMAIL AND senha = :SENHA";
-	$stmt = $PDO->prepare($sql_login);
+	$stmt = $PDO->prepare($logar);
 	$stmt->bindParam(':EMAIL', $email);
 	$stmt->bindParam(':SENHA', $senha);
 	$stmt->execute();
 
 	if($stmt->rowCount() > 0){
-		$retornoApp = array("LOGIN"=>"SUCESSO");
+		$resposta = ["status"] => "sucesso";
+		$resposta = ["mensagem"] => "Login realizado com sucesso";
 	}else{
-		$retornoApp = array("LOGIN"=>"ERRO");
+		$resposta = ["status"] => "erro");
+		$resposta = ["mensagem"] => "Erro nas credenciais do usuário";
 	}
 
-	echo json_encode($retornoApp);
+	echo json_encode($resposta);
 ?>
