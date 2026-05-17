@@ -3,8 +3,8 @@
 
 	header('Content-Type: Application/json');
 
-	$email = $_POST['email_app'];
-	$senha = $_POST['senha_app'];
+	$email = $_POST['email'];
+	$senha = $_POST['senha'];
 
 	$resposta = array();
 
