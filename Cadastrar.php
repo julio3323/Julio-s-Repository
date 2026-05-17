@@ -3,9 +3,9 @@
 
 	header('Content-Type: Application/json');
 
-	$nome = $_POST['nome_app'];
-	$email = $_POST['email_app'];
-	$senha = $_POST['senha_app'];
+	$nome = $_POST['nome'];
+	$email = $_POST['email'];
+	$senha = $_POST['senha'];
 
 	if(isset($ocon) && $ocon){
 
