@@ -6,19 +6,18 @@
 	$email = $_POST['email_app'];
 	$senha = $_POST['senha_app'];
 
-	$logar = "SELECT * FROM tblogin WHERE email = :EMAIL AND senha = :SENHA";
-	$stmt = $PDO->prepare($logar);
-	$stmt->bindParam(':EMAIL', $email);
-	$stmt->bindParam(':SENHA', $senha);
-	$stmt->execute();
+	$verificar = "SELECT * FROM Usuario WHERE email = '$email' AND senha = '$senha'";
 
-	if($stmt->rowCount() > 0){
-		$resposta = ["status"] => "sucesso";
-		$resposta = ["mensagem"] => "Login realizado com sucesso";
-	}else{
-		$resposta = ["status"] => "erro");
-		$resposta = ["mensagem"] => "Erro nas credenciais do usuário";
-	}
-
-	echo json_encode($resposta);
+    if(isset($ocon) && $ocon){
+        if(mysqli_num_rows(mysqli_query($ocon, $verificar)) > 0){
+            $resposta["status"] = "sucesso";
+            $resposta["mensagem"] = "Login bem sucedido";
+            echo json_encode($resposta);
+        }
+        else{
+            $resposta["status"] = "erro";
+            $resposta["mensagem"] = "Email ou senha estão errado, tente novamente";
+            echo json_encode($resposta);
+        }
+    }
 ?>
