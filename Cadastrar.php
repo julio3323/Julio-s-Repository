@@ -7,31 +7,32 @@
 	$email = $_POST['email_app'];
 	$senha = $_POST['senha_app'];
 
-	$sql_verifica = "SELECT * FROM tblogin WHERE email = :EMAIL";
-	$stmt = $PDO->prepare($sql_verifica);
-	$stmt->bindParam(':EMAIL', $email);
-	$stmt->execute();
+	if(isset($ocon) && $ocon){
 
-	if($stmt->rowCount() > 0){
-		$resposta = ["status"] => "erro";
-		$resposta = ["mensagem"] => "Email já cadastrado";
-	}
-	else{
-		//cadastro realizado
+        if(filter_var($email, FILTER_VALIDATE_EMAIL)){
+            
+            $verificar = "SELECT * FROM Usuario WHERE email = '$email'";
 
-		$cadastrar = "INSERT INTO tblogin (nome, email, senha) VALUES (:NOME, :EMAIL, :SENHA);";
-		$stmt = $PDO->prepare($cadastrar);
-		$stmt->bindParam(':NOME', $nome);
-		$stmt->bindParam(':EMAIL', $email);
-		$stmt->bindParam(':SENHA', $senha);
+            if(mysqli_num_rows(mysqli_query($ocon, $verificar)) == 0){
 
-		if($stmt->execute()){
-			$rsposta = ["status"] => "sucesso";
-			$resposta = ["mensagem"] => "Cadastro bem sucedido";
-		}else{
-			$resposta = ["status"] => "erro"
-			$resposta = ["mensagem"] => "Erro de cadastro, tente novamente mais tarde.";
-		}
-	}
-	echo json_encode($resposta);
+            $cadastrar = "INSERT INTO Usuario(nome, email, senha) VALUES('$nome','$email','$senha')";
+'
+                if(mysqli_query($ocon, $cadastrar)){
+                    $resposta["status"] = "sucesso";
+                    $resposta["mensagem"] = "Cadastro bem sucedido";
+                    echo json_encode($resposta);
+                }
+            }
+            else{
+                $resposta["status"] = "erro";
+                $resposta["mensagem"] = "Email já cadastrado";
+                echo json_encode($resposta);
+            }
+        }
+        else{
+            $resposta["status"] = "erro";
+            $resposta["mensagem"] = "Email inválido";
+            echo json_encode($resposta);
+        }
+    }
 ?>
