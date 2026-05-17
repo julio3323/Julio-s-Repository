@@ -6,6 +6,8 @@
 	$email = $_POST['email_app'];
 	$senha = $_POST['senha_app'];
 
+	$resposta = array();
+
 	$verificar = "SELECT * FROM Usuario WHERE email = '$email' AND senha = '$senha'";
 
     if(isset($ocon) && $ocon){
