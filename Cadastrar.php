@@ -15,7 +15,7 @@
 
             if(mysqli_num_rows(mysqli_query($ocon, $verificar)) == 0){
 
-            $cadastrar = "INSERT INTO Usuario(nome, email, senha) VALUES('$nome','$email','$senha')";
+            $cadastrar = "INSERT INTO tblogin(nome, email, senha) VALUES('$nome','$email','$senha')";
 
                 if(mysqli_query($ocon, $cadastrar)){
                     $resposta["status"] = "sucesso";
