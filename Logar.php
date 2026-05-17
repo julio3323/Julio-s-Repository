@@ -8,7 +8,7 @@
 
 	$resposta = array();
 
-	$verificar = "SELECT * FROM Usuario WHERE email = '$email' AND senha = '$senha'";
+	$verificar = "SELECT * FROM tblogin WHERE email = '$email' AND senha = '$senha'";
 
     if(isset($ocon) && $ocon){
         if(mysqli_num_rows(mysqli_query($ocon, $verificar)) > 0){
