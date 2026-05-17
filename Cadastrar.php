@@ -11,7 +11,7 @@
 
         if(filter_var($email, FILTER_VALIDATE_EMAIL)){
             
-            $verificar = "SELECT * FROM Usuario WHERE email = '$email'";
+            $verificar = "SELECT * FROM tblogin WHERE email = '$email'";
 
             if(mysqli_num_rows(mysqli_query($ocon, $verificar)) == 0){
 
