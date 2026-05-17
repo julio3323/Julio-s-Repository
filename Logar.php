@@ -18,7 +18,7 @@
         }
         else{
             $resposta["status"] = "erro";
-            $resposta["mensagem"] = "Email ou senha estão errado, tente novamente";
+            $resposta["mensagem"] = "Email ou senha estão errados, tente novamente";
             echo json_encode($resposta);
         }
     }
