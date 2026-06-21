@@ -5,7 +5,7 @@ $ocon = mysqli_connect(
         getenv('MYSQLHOST'),
         getenv('MYSQLUSER'),
         getenv('MYSQLPASSWORD'),
-        getenv('MYSQL_DATABASE') /*?: "railway"*/,
+        getenv('MYSQL_DATABASE'),
         getenv('MYSQLPORT'));
 $resposta = array();
 if(!$ocon){
